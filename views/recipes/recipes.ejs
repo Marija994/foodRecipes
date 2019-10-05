@@ -1,0 +1,35 @@
+<%- include ../includes/head.ejs %>
+<%- include ../includes/navigation.ejs %>
+
+</header>
+
+<main class="mb-5">
+
+    <h1 class="text-center mt-2 mb-5">Explore Recipes</h1>
+
+    <div class="row text-center container-fluid mb-5" style="display:flex; flex-wrap: wrap;">
+            <% if(recipes.length > 0) { %>
+                <% recipes.forEach(recipe => { %>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="thumbnail cat-show">
+                        <img src="<%=recipe.image%>">
+                        <div class="caption">
+                            <h4><%=recipe.name%></h4>
+                            <p><%=recipe.description.substring(0,100)%>(...)</p>
+                        </div>
+                        <p>
+                            <a href="/recipes/<%=recipe._id%>" class="btn btn-info">Read More</a>
+                        </p>
+                    </div>
+                </div>
+            <% }); } else { %>
+                <h1>No recipes found</h1>
+            <% } %>
+        </div>
+
+</main>
+
+
+
+<%- include ../includes/pagination.ejs %>
+<%- include ../includes/footer.ejs %>

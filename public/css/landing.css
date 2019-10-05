@@ -1,0 +1,89 @@
+.smallScreenText {
+    background-image: url("/slidesImages/slide3.jpg");
+    background-size: contain;
+    background-position: center;
+    height: 20vh;
+    padding-top: 6vh;
+}
+
+.sstextcontainer{
+    color: #e6daa5;
+    text-shadow: 3px 3px 1px #333;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.534);
+
+}
+
+.smallScreenText h1{
+    font-size: 2em;
+}
+
+.smallScreenText h4{
+    font-size: 1.1em;
+}
+
+.carousel-inner {
+    height: 40vh;
+}
+
+.textCarousel {
+    color:#e6daa5;
+    background-color: rgba(0, 0, 0, 0.534);
+    text-shadow: 3px 3px 1px #333;
+    position:absolute;
+    z-index:12;
+    top:17vh;
+    left:0;
+    width:100%;
+    text-align:center;
+}
+
+.carousel-item{
+    height: 40vh;
+}
+
+@media only screen and (min-width: 768px) and (max-width:960px) {
+     .textCarousel {
+         top: 20vh;
+     }
+}
+
+@media only screen and (min-width: 961px) {
+    .textCarousel {
+        top: 25vh;
+    }
+}
+
+.btn-primary, .btn-primary:visited {
+    background-color: rgba(17, 16, 16, 0.842);
+    color: #e6daa5;
+    border: 1px solid #e6daa5;
+    box-shadow: none!important;
+    border-style: outset;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background-color: #e6daa5da !important;
+    color: rgba(17, 16, 16, 0.842) !important;
+    border: 1px solid rgba(17, 16, 16, 0.842) !important;
+    box-shadow: none!important;
+    border-style: outset;
+    text-decoration: none;
+}
+
+.btn-primary:active{
+    background-color: #e6daa5da !important;
+    color: rgb(17, 16, 16) !important;
+    border: 1px solid #e6daa5da !important;
+    box-shadow: none!important;
+    border-style: outset;
+    text-decoration: none;
+}
+
+.btn-lg {
+    line-height: 3em;
+    width: fit-content;
+}
+
+

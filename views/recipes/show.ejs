@@ -1,0 +1,68 @@
+<%- include ../includes/head.ejs %>
+<%- include ../includes/navigation.ejs %>
+</header>
+
+<main>
+
+    <div class="container-fluid text-center category-top mb-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title"><%=recipe.name%></h1>
+                <h5>Submitted by: <%=recipe.author.username%></h5>
+                <% if(currentUser) { %>
+                    <%if (recipe.author.id.toString() === currentUser._id.toString()) {%>
+                <form class="inline-form" action="/auth/recipe/<%=recipe._id%>?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-danger float-right mr-3" value="Delete Recipe">
+                </form>
+                <a href="/auth/recipe/<%=recipe._id%>/edit" class="btn btn-warning float-right mr-3">Edit Recipe</a>
+                <%}}%>
+                <% if(currentUser) { %>
+                    <form class="inline-form" action="/auth/user/<%=recipe._id%>/fav" method="POST">
+                        <input type="submit" class="btn btn-success float-right mr-3" value="Add to Favourites">
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center category-top mb-5">
+
+        <div class="row d-sm-none mt-3 smallpic">
+            <div class="thumbnail">
+                <img src="<%=recipe.image%>">
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-5 d-none d-sm-block">
+                <div class="thumbnail">
+                    <img src="<%=recipe.image%>">
+                </div>
+            </div>
+            <div class="col-12 col-sm-7">
+                <h1>Ingredients:</h1>
+                <ul class="list-group list-group-flush mt-3">
+                    <li class="list-group-item"><%=recipe.measure%> - <%=recipe.ingredients%></li>
+                    <li class="list-group-item"><%=recipe.measure%> - <%=recipe.ingredients%></li>
+                    <li class="list-group-item"><%=recipe.measure%> - <%=recipe.ingredients%></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center category-top mb-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Preparation</h1>
+                <p class="card-text"><%=recipe.description%></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mb-5">
+            <iframe width="560" height="315" src="<%= recipe.video%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+
+</main>
+
+<%- include ../includes/footer.ejs %>

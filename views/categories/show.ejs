@@ -1,0 +1,46 @@
+<%- include ../includes/head.ejs %>
+<%- include ../includes/navigation.ejs %>
+</header>
+
+<main>
+
+    <div class="container-fluid text-center category-top mb-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title"><%=category.name%></h1>
+                <h5>Submitted by: <%=category.author.username%></h5>
+                <% if(currentUser) { %>
+                    <%if (category.author.id.toString() === currentUser._id.toString()) {%>
+                <form class="inline-form" action="/auth/category/<%=category._id%>?_method=DELETE" method="POST">
+                    <input type="submit" class="btn btn-danger float-right mr-3" value="Delete Category">
+                </form>
+                <a href="/auth/category/<%=category._id%>/edit" class="btn btn-warning float-right mr-3">Edit Category</a>
+                <% }} %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center container-fluid mb-5" style="display:flex; flex-wrap: wrap;">
+        <% if(category.recipes.length > 0) { %>
+            <% recipe.forEach(recipe => { %>
+        <div class="col-md-3 col-sm-6 mb-3">
+            <div class="thumbnail cat-show">
+                <img src="<%=recipe.image%>">
+                <div class="caption">
+                    <h4><%=recipe.name%></h4>
+                    <p><%=recipe.description.substring(0,100)%>(...)</p>
+                </div>
+                <p>
+                    <a href="/recipes/<%=recipe._id%>" class="btn btn-info">Read More</a>
+                </p>
+            </div>
+        </div>
+        <%}) } else { %>
+        <h1>No recipes found</h1>
+        <% } %>
+    </div>
+
+</main>
+
+<%- include ../includes/pagination.ejs %>
+<%- include ../includes/footer.ejs %>
